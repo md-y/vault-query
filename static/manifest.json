@@ -1,0 +1,10 @@
+{
+  "id": "vault-query",
+  "name": "Vault Query",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Query your vault using any Langchain supported model.",
+  "author": "Samuel Preston",
+  "authorUrl": "https://samuelpreston.me",
+  "isDesktopOnly": true
+}

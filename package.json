@@ -1,0 +1,21 @@
+{
+  "name": "vault-query",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bun run scripts/build.ts",
+    "activate": "bun run scripts/build.ts --to-vault",
+    "deactivate": "bun run scripts/deactivate"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "bun-copy-plugin": "^0.2.1",
+    "obsidian": "^1.8.7"
+  }
+}
