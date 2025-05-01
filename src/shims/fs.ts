@@ -1,5 +1,5 @@
 import type { Vault } from "obsidian";
-import ShimData from "./ShimData";
+import VaultIndex from "../backend/VaultIndex";
 import { basename } from "node:path";
 import { Dirent, type Stats } from "node:fs";
 
@@ -75,7 +75,7 @@ function parsePath(path: string): [Vault, string] {
   if (!res || res.length < 3) throw new Error(`Unable to parse path: ${path}`);
   const vaultName = res[1]!;
   const normalizedPath = (res[2] ?? "") === "" ? "/" : res[2]!;
-  return [ShimData.getVault(vaultName), normalizedPath];
+  return [VaultIndex.getVault(vaultName), normalizedPath];
 }
 
 function getFileInfoFuncs(isFile: boolean) {

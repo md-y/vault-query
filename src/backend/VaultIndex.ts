@@ -1,6 +1,6 @@
 import { type Vault } from "obsidian";
 
-export default class ShimData {
+export default class VaultIndex {
   private static vaults: Record<string, Vault> = {};
 
   static addVault(vault: Vault) {

@@ -1,27 +1,34 @@
+import ModelAPI, { SupportedAPI } from "../backend/ModelAPI";
 import QueryManager from "../backend/QueryManager";
-import ShimData from "../shims/ShimData";
+import VaultIndex from "../backend/VaultIndex";
 import QueryModal from "./QueryModal";
 import { App, Plugin, type PluginManifest } from "obsidian";
 
-interface VaultQuerySettings {}
+export interface VaultQuerySettings {
+  modelAPI: SupportedAPI;
+  model: string;
+}
 
-const DEFAULT_SETTINGS: VaultQuerySettings = {};
+const DEFAULT_SETTINGS: VaultQuerySettings = {
+  modelAPI: SupportedAPI.OLLAMA_LOCAL,
+  model: "tinyllama:latest",
+};
 
 export default class VaultQueryPlugin extends Plugin {
-  private settings: VaultQuerySettings = DEFAULT_SETTINGS;
-
-  private queryManager: QueryManager;
+  public settings: VaultQuerySettings = DEFAULT_SETTINGS;
+  public queryManager: QueryManager;
+  public modelAPI: ModelAPI;
 
   constructor(app: App, manifest: PluginManifest) {
     super(app, manifest);
-    this.queryManager = new QueryManager(app);
+    VaultIndex.addVault(this.app.vault);
+    this.modelAPI = new ModelAPI(this);
+    this.queryManager = new QueryManager(this);
   }
 
   async onload(): Promise<void> {
-    let newSettings = (await this.loadData()) as VaultQuerySettings;
+    const newSettings = (await this.loadData()) as VaultQuerySettings;
     this.settings = { ...this.settings, ...newSettings };
-
-    ShimData.addVault(this.app.vault);
 
     this.addCommand({
       id: "query-vault",
@@ -33,7 +40,7 @@ export default class VaultQueryPlugin extends Plugin {
   }
 
   async onunload(): Promise<void> {
-    ShimData.removeVault(this.app.vault);
+    VaultIndex.removeVault(this.app.vault);
   }
 
   async saveSettings(): Promise<void> {
