@@ -25,6 +25,7 @@
     "obsidian": "^1.8.7",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
+    "uuid": "^11.1.0",
     "voy-search": "^0.6.3"
   }
 }

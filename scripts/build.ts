@@ -54,7 +54,7 @@ await build({
   plugins: [
     binaryWasm,
     replacePackage("node:path", "path-browserify"),
-    shim("uuid"),
+    replacePackage("uuid", "uuid"), // Langchain imports uuid incorrectly, so this fixes it
     shim("node:fs/promises", "fs.ts"),
     shim("voy-search", "voy.js"),
     copy("static/", outdir),

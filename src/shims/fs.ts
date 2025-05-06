@@ -70,6 +70,7 @@ export async function readFile(path: string, opts?: any): Promise<string> {
 }
 
 function parsePath(path: string): [Vault, string] {
+  path = path.replaceAll("\\", "/");
   const regex = /\/([^\/]+)\/?(.*)/;
   const res = regex.exec(path);
   if (!res || res.length < 3) throw new Error(`Unable to parse path: ${path}`);
