@@ -46,7 +46,7 @@ const binaryWasm: BunPlugin = {
 
 await build({
   entrypoints: ["src/main.ts"],
-  // minify: true,
+  minify: true,
   outdir,
   target: "node",
   splitting: false,
