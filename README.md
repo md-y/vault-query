@@ -5,6 +5,7 @@
 Deliverables for CS 6320:
  - [Video](https://youtu.be/usL-d-bmfLk)
  - [Presentation](./assets/presentation.pdf)
+ - [Final Report](./assets/final_report.md)
 
 Table of Contents
  - [Usage](#usage)
@@ -12,7 +13,14 @@ Table of Contents
 
 ## Usage
 
-#### Setup
+#### Release
+
+You can view the built plugin in the [releases](https://github.com/md-y/vault-query/releases) section. To use it, extract the zip file in the obsidian plugin directory. It should look like this:
+```
+[Vault Directory]/.obsidian/plugins/vault-query/main.js
+```
+
+#### Setup Development
 
 Make sure that [Bun](https://bun.sh/) is installed.
 
