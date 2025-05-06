@@ -2,7 +2,9 @@
 
 [Obsidian](https://obsidian.md/) plugin to query your vault using [LangChain](https://langchain.com/).
 
-View the demo and presentation for CS 6320 [here](https://youtu.be/usL-d-bmfLk).
+Deliverables for CS 6320:
+ - [Video](https://youtu.be/usL-d-bmfLk)
+ - [Presentation](./assets/presentation.pdf)
 
 Table of Contents
  - [Usage](#usage)
